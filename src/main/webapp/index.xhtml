@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+    <h:head>
+        <title>Guia09</title>
+    </h:head>
+    <h:body>
+        <h1>PR16011</h1>
+        <br></br>
+        <h1>Entidad Tipo Parte</h1>
+        <br></br>
+        <h:form id="tabla">
+            <p:dataTable value="#{tipoParteBean.listatipo}"
+                         var="tpp"
+                         paginator="true"
+                         rows="6"
+                          >
+                <p:column filterBy="#{tpp.idTipoParte}">
+                    <f:facet name="header">
+                        <h:outputText value="Id Tipo Parte" />  
+                    </f:facet>
+                    <h:outputText value="#{tpp.idTipoParte}"/>
+                </p:column>
+                
+                <p:column filterBy="#{tpp.nombre}">
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"/> 
+                    </f:facet>
+                    <h:outputText value="#{tpp.nombre}"/>
+                </p:column>
+                <p:column filterBy="#{tpp.activo}">
+                    <f:facet name="header">
+                        <h:outputText value="Activo"/> 
+                    </f:facet>
+                    <h:outputText value="#{tpp.activo}"/>
+                </p:column>
+                <p:column filterBy="#{tpp.observaciones}">
+                    <f:facet name="header">
+                        <h:outputText value="Observaciones"/> 
+                    </f:facet>
+                    <h:outputText value="#{tpp.observaciones}"/>
+                </p:column>
+                
+                
+            </p:dataTable>
+            
+            <h:commandLink id="pdf">
+                <p:graphicImage name="/imagenes/pdf.png"/>
+                <p:dataExporter type="pdf" target="tbl" fileName="TipoParte"></p:dataExporter>
+            </h:commandLink>
+            
+        </h:form>
+    </h:body>
+</html>
+
